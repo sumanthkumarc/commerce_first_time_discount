@@ -1,0 +1,5 @@
+commerce_first_time_discount.discount_control_form:
+  title: Commerce First Time Discount
+  route_name: commerce_first_time_discount.first_time_discount
+  parent: commerce.admin_commerce
+  description: 'First Time Discount settings.'

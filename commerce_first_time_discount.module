@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Contains commerce_first_time_discount.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function commerce_first_time_discount_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the commerce_first_time_discount module.
+    case 'help.page.commerce_first_time_discount':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides first time discount functionality for commerce.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function commerce_first_time_discount_theme() {
+  return [
+    'commerce_first_time_discount_block' => [
+      'variables' => [
+        'content' => NULL,
+        'percentage' => NULL,
+        'coupon_code' => NULL,
+      ],
+      'template' => 'commerce-first-time-discount-block',
+    ],
+  ];
+}

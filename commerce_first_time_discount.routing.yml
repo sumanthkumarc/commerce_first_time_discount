@@ -1,0 +1,10 @@
+
+commerce_first_time_discount.first_time_discount:
+  path: '/admin/commerce/first-time-discount'
+  defaults:
+    _controller: '\Drupal\commerce_first_time_discount\Controller\FirstTimeDiscountController::renderUserInterface'
+    _title: 'Provides first time discount form'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+      _admin_route: TRUE

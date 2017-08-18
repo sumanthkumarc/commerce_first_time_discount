@@ -1,0 +1,14 @@
+{
+  "name": "drupal/commerce_first_time_discount",
+  "type": "drupal-module",
+  "description": "Provides first time discount functionality for commerce.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/commerce_first_time_discount",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/commerce_first_time_discount",
+    "source": "http://cgit.drupalcode.org/commerce_first_time_discount"
+  },
+  "require": { }
+}

@@ -1,0 +1,7 @@
+name: commerce_first_time_discount
+type: module
+description: Provides first time discount functionality for commerce.
+core: 8.x
+package: Custom
+dependencies:
+  - commerce
