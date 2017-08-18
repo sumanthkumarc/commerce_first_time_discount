@@ -80,13 +80,15 @@ class DiscountControlForm extends ConfigFormBase {
       ];
 
       $coupon_id = \Drupal::state()->get('commerce_ftd_active_coupon');
-      $coupon = Coupon::load($coupon_id);
+      if($this->isFirstTimePromotionAvailable() && !empty($coupon_id)) {
 
-      $discount = $coupon->getPromotion()->getOffer()->getPercentage();
+        $coupon = Coupon::load($coupon_id);
+        $discount = $coupon->getPromotion()->getOffer()->getPercentage();
 
-      $form['active_coupon'] = [
-        '#markup' => 'Only one coupon active at any given time. Currenly active Coupon code: ' . $coupon->getCode() . ', Discount: ' . $discount * 100 . '%',
-      ];
+        $form['active_coupon'] = [
+          '#markup' => 'Only one coupon active at any given time. Currenly active Coupon code: ' . $coupon->getCode() . ', Discount: ' . $discount * 100 . '%',
+        ];
+      }
 
       $form['coupons_table'] = $this->getCouponsTable();
 
@@ -180,7 +182,7 @@ class DiscountControlForm extends ConfigFormBase {
     $state = \Drupal::state();
     $first_time_promotion = $state->get('first_time_promotion');
 
-    if (!$first_time_promotion || empty(Promotion::load($first_time_promotion))) {
+    if (empty($first_time_promotion) || empty(Promotion::load($first_time_promotion))) {
       return FALSE;
     }
     else {
@@ -337,7 +339,7 @@ class DiscountControlForm extends ConfigFormBase {
     $form['promotions'] = [
       '#type' => 'table',
       '#header' => $this->buildHeader(),
-      '#empty' => $this->t('There are no coupons yet.'),
+      '#empty' => $this->t('No coupons added yet.'),
     ];
 
     $usages = $this->getCouponsUsage();
@@ -457,3 +459,4 @@ class DiscountControlForm extends ConfigFormBase {
   }
 
 }
+
